@@ -7,16 +7,20 @@ import javax.imageio.ImageIO;
 
 public class Game extends JPanel {
     public Game(){
-        super();
-        setLayout(new BorderLayout()); // Установка менеджера компоновки в null
+        super(new GridBagLayout());
+        setVisible(false);
         try {
             BufferedImage image = ImageIO.read(new File("C:\\Users\\kupri\\IdeaProjects\\Pong\\field.jpeg"));
             JLabel label = new JLabel(new ImageIcon(image));
-            label.setBounds(0, 0, getWidth(), getHeight());
-            add(label);
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            gbc.anchor = GridBagConstraints.CENTER;
+            add(label, gbc);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        setVisible(true);
     }
 }

@@ -8,7 +8,7 @@ public class Menu extends JPanel {
         Game game = new Game();
 
         setBackground(Consts.gray);
-        setVisible(true);
+        setVisible(false);
         setPreferredSize(new Dimension(300, 200));
 
         JLabel title = new JLabel("Pong Game");
@@ -21,6 +21,8 @@ public class Menu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                PongWindow pongWindow = new PongWindow();
+
             }
         });
 

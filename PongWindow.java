@@ -1,8 +1,9 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class PongWindow extends JFrame implements ActionListener {
+public class PongWindow extends JFrame {
+    Menu menu = new Menu();
+    Game game = new Game();
+
     public PongWindow() {
         setTitle("Pong");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -10,15 +11,16 @@ public class PongWindow extends JFrame implements ActionListener {
         setResizable(false);
         setVisible(true);
         setLocationRelativeTo(null);
-        Menu menu = new Menu();
-        Game game = new Game();
+
         add(game);
-        game.setVisible(true);
-        //add(menu);
+
+        add(menu);
+        menu.setVisible(true);
 
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+    public void startGame() {
+        menu.setVisible(false);
+        game.setVisible(true);
     }
 }
