@@ -6,21 +6,26 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Game extends JPanel {
-    public Game(){
-        super(new GridBagLayout());
-        setVisible(false);
+    JLabel score = new JLabel(Consts.P1_Score + " : " + Consts.P2_Score);
+    private BufferedImage image;
+    public Game() {
+        add(score);
+        score.setFont(Consts.fontScore);
         try {
-            BufferedImage image = ImageIO.read(new File("C:\\Users\\kupri\\IdeaProjects\\Pong\\field.jpeg"));
-            JLabel label = new JLabel(new ImageIcon(image));
-            GridBagConstraints gbc = new GridBagConstraints();
-            gbc.gridx = 0;
-            gbc.gridy = 0;
-            gbc.weightx = 1.0;
-            gbc.weighty = 1.0;
-            gbc.anchor = GridBagConstraints.CENTER;
-            add(label, gbc);
+            image = ImageIO.read(new File("./field.jpeg"));
         } catch (IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error loading image: " + e.getMessage());
         }
+    }
+
+    public void redraw(){
+        score.setText(Consts.P1_Score + " : " + Consts.P2_Score);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
 }

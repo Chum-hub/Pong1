@@ -1,30 +1,18 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Menu extends JPanel {
-    public Menu(){
-        Game game = new Game();
-
+    JButton startButton = new JButton("Start");
+    public Menu() {
         setBackground(Consts.gray);
-        setVisible(false);
-        setPreferredSize(new Dimension(300, 200));
 
         JLabel title = new JLabel("Pong Game");
-        title.setFont(Consts.font);
+        title.setFont(Consts.fontName);
 
-        JButton startButton = new JButton("Start");
+
         startButton.setPreferredSize(new Dimension(100, 70));
-        startButton.setFont(Consts.font);
-        startButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                PongWindow pongWindow = new PongWindow();
+        startButton.setFont(Consts.fontName);
 
-            }
-        });
 
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -41,5 +29,9 @@ public class Menu extends JPanel {
         constraints.anchor = GridBagConstraints.CENTER;
         add(startButton, constraints);
 
+    }
+
+    public JButton getStartButton() {
+        return startButton;
     }
 }
